@@ -61,9 +61,6 @@ public final class SSHKey implements FingerprintableKey {
         if (keyPair == null) {
             throw new IllegalArgumentException("keyFormat must not be null");
         }
-        if (keyPair.getPublic() == null) {
-            throw new IllegalArgumentException("publicKey must not be null");
-        }
         this.keyPair = keyPair;
         this.fingerprint = keyFormat.getFingerprint(keyPair.getPublic());
     }

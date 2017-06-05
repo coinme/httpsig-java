@@ -37,7 +37,7 @@ import net.adamcin.httpsig.api.Signer;
  */
 public class AsyncSignatureCalculator implements SignatureCalculator {
     private static final SignatureCalculator DEFAULT_DELEGATEE = new SignatureCalculator() {
-        public void calculateAndAddSignature(String url, Request request, RequestBuilderBase<?> requestBuilder) { }
+        public void calculateAndAddSignature(Request request, RequestBuilderBase<?> requestBuilder) { }
     };
 
     private final Signer signer;
@@ -55,8 +55,8 @@ public class AsyncSignatureCalculator implements SignatureCalculator {
     /**
      * {@inheritDoc}
      */
-    public void calculateAndAddSignature(String url, Request request, RequestBuilderBase<?> requestBuilder) {
-        delegatee.calculateAndAddSignature(url, request, requestBuilder);
+    public void calculateAndAddSignature(Request request, RequestBuilderBase<?> requestBuilder) {
+        delegatee.calculateAndAddSignature(request, requestBuilder);
         AsyncUtil.calculateSignature(this.signer, request, requestBuilder);
     }
 }

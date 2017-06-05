@@ -44,13 +44,21 @@ import java.util.List;
  */
 public enum KeyFormat {
 
+    RSA_SHA(
+            "rsa-sha", "RSA", FingerprintGenerator.RSA, Algorithm.RSA_SHA256,
+            Arrays.asList(Algorithm.RSA_SHA256, Algorithm.RSA_SHA512)
+    ),
+    DSA_SHA(
+            "dsa-sha", "DSA", FingerprintGenerator.DSA, Algorithm.DSA_SHA1,
+            Arrays.asList(Algorithm.DSA_SHA1)
+    ),
     SSH_DSS(
             "ssh-dss", "DSA", FingerprintGenerator.DSA, Algorithm.SSH_DSS,
             Arrays.asList(Algorithm.SSH_DSS, Algorithm.DSA_SHA1)
     ),
     SSH_RSA(
             "ssh-rsa", "RSA", FingerprintGenerator.RSA, Algorithm.SSH_RSA,
-                    Arrays.asList(Algorithm.SSH_RSA, Algorithm.RSA_SHA1, Algorithm.RSA_SHA256, Algorithm.RSA_SHA512)
+            Arrays.asList(Algorithm.SSH_RSA, Algorithm.RSA_SHA1, Algorithm.RSA_SHA256, Algorithm.RSA_SHA512)
     ),
     UNKOWN("_unknown_", "_unknown_", FingerprintGenerator.NOP, null, Collections.<Algorithm>emptyList());
 
